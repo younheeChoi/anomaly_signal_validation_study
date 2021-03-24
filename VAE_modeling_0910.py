@@ -11,14 +11,17 @@ from keras.models import Model, Sequential
 from keras import objectives
 import keras
 
+# 미리 선정된 입력 및 출력 parameter 모아둔 csv 파일 챙김
 para = pd.read_csv('new_corr_PARA.csv')
 
+# 데이터 불러오기_ 입력과 출력의 개수가 다르기에 각각 호출해야함
 with open('two_d_in_data.pkl', 'rb') as f:
     data_in = pickle.load(f)
 
 with open('two_d_out_data.pkl', 'rb') as f:
     data_out = pickle.load(f)
 
+# 모델 훈련 및 검증용 데이터로 나눔 약 9:1 비율임
 train_in = data_in[:87969]
 valid_in = data_in[87969:]
 train_out = data_out[:87969]
